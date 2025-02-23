@@ -24,9 +24,12 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
-        working-directory: ./resume
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - name: Install stuff
+      working-directory: ./resume
+      run: npm ci
+    - name: building stuff
+      run: npm run build --if-present
+    - name: testing stuff
+      run: npm test
